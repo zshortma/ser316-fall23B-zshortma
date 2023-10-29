@@ -13,7 +13,7 @@ public class Game {
     /** Holds the score for the game. */
     public int score;
 
-    String name;
+    String playerName;
 
     /** Holds the answer for the game. */
     String answer;
@@ -38,7 +38,7 @@ public class Game {
      * Gets the name for the game.
      * @return String The name.
      */
-    public String getName() {return this.name;}
+    public String getName() {return this.playerName;}
 
     /**
      * Gets the answer for the game.
@@ -107,7 +107,7 @@ public class Game {
      * @param imageType 0=city, 1=country
      */
     public Game(String name, int imageType){
-        this.name = "Elsa";
+        this.playerName = "Elsa";
         if(imageType == 0){
             getRandomWord("city");
         }else if(imageType == 1){
@@ -125,7 +125,7 @@ public class Game {
      * @param imageType 0=city, 1=country
      */
     public Game(String fixedWord, String name){
-        this.name = name;
+        this.playerName = name;
         this.answer = fixedWord;
         setScore(10);
         this.progress = new char[answer.length()];
@@ -137,7 +137,7 @@ public class Game {
      * Constructs a new hangmanGame with no arguments
      */
     public Game(){
-        this.name = "";
+        this.playerName = "";
         this.answer = "";
         setScore(10);
         this.progress = new char[answer.length()];
@@ -146,7 +146,7 @@ public class Game {
     }
 
     public void init_Game(String answer, String name){
-        this.name = name;
+        this.playerName = name;
         this.answer = answer;
         this.guesses.clear();
         setScore(10);
@@ -160,7 +160,7 @@ public class Game {
      * @param imageType 0=city, 1=country
      */
     public Game(int imageType){
-        this.name = "Anna";
+        this.playerName = "Anna";
         if(imageType == 1){
             getRandomWord("city");
         }else if(imageType == 2)
