@@ -29,6 +29,9 @@ public class Game {
 
     /** The status of the game. {0 - In progress, 1 - Game won, 2 - game lost}*/
     protected int gameStatus = 0;
+    
+    public static final int CITY = 0;
+    public static final int COUNTRY = 1;
 
     // all letter guesses, needs to be cleared for each game
     ArrayList<String> guesses = new ArrayList<String>();
@@ -108,9 +111,9 @@ public class Game {
      */
     public Game(String name, int imageType){
         this.playerName = "Elsa";
-        if(imageType == 0){
+        if(imageType == CITY){
             getRandomWord("city");
-        }else if(imageType == 1){
+        }else if(imageType == COUNTRY){
             getRandomWord("country");
         }
         setScore(14);
