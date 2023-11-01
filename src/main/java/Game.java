@@ -278,6 +278,9 @@ public class Game {
      * @param dir directory to the relevant image folder.
      */
     public void getRandomWord(String choice) {
+    	
+    	/* make case sensitive */
+    	choice = choice.toLowerCase();
 
         String[] cities = {"Aachen", "Berlin", "Phoenix", "Washington", "Munich", "Hamburg"};
         String[] countries = {"USA", "Germany", "Ireland", "Switzerland", "Austria"};
