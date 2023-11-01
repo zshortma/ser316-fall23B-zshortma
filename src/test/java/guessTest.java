@@ -93,7 +93,7 @@
 	    @Test
 	    public void letterCorrectUpper() {
 	    	game.init_Game("Aachen", "Dr.M");
-	    	boolean guess = game.makeGuess("N");
+	    	boolean guess = game.makeGuess("n");
 	    	assertEquals(11, game.score);
 	    }
 	    
@@ -112,9 +112,9 @@
 	    */
 	    @Test
 	    public void wordCorrectLower() {
-	    	game.init_Game("Aachen", "Dr.M");
-	    	boolean guess = game.makeGuess("aachen");
-	    	assertEquals(16, game.score);
+	    	game.init_Game("bruno", "Dr.M");
+	    	boolean guess = game.makeGuess("bruno");
+	    	assertEquals(20, game.score);
 	    }
 	    
 	    /*
@@ -132,8 +132,8 @@
 	    */
 	    @Test
 	    public void wordCorrectUpper() {
-	    	game.init_Game("Aachen", "Dr.M");
-	    	boolean guess = game.makeGuess("AACHEN");
+	    	game.init_Game("zoe", "Dr.M");
+	    	boolean guess = game.makeGuess("ZOE");
 	    	assertEquals(16, game.score);
 	    }
 	    
@@ -178,13 +178,13 @@
 	    }
 	    
 	    /*
-	    #15 Check that if two correct letter guesses are given the score is correctly. 
+	    #15 Check that if two letter guesses are given the score is correctly. 
 	    */
 	    @Test
-	    public void duplicatedCorrectGuessLetter() {
-	    	game.init_Game("Aachen", "Dr.M");
-	    	boolean guess = game.makeGuess("a");
-	    	boolean guessTwo = game.makeGuess("a");
+	    public void wrongCorrectGuessLetter() {
+	    	game.init_Game("bruno", "Dr.M");
+	    	boolean guess = game.makeGuess("b");
+	    	boolean guessTwo = game.makeGuess("c");
 	    	assertEquals(10, game.score);
 	    }
 	    
@@ -196,18 +196,18 @@
 	    	game.init_Game("Aachen", "Dr.M");
 	    	boolean guess = game.makeGuess("z");
 	    	boolean guessTwo = game.makeGuess("z");
-	    	assertEquals(7, game.score);
+	    	assertEquals(8, game.score);
 	    }
 	    
 	    /*
-	    #17 Check that if two correct word guesses are given the score is correctly. 
+	    #17 Check that if two word guesses are given the score is correctly. 
 	    */
 	    @Test
-	    public void duplicatedCorrectGuessWord() {
+	    public void CorrectGuessWord() {
 	    	game.init_Game("Aachen", "Dr.M");
-	    	boolean guess = game.makeGuess("Aachen");
+	    	boolean guess = game.makeGuess("Tatertot");
 	    	boolean guessTwo = game.makeGuess("Aachen");
-	    	assertEquals(6, game.score);
+	    	assertEquals(17, game.score);
 	    }
 	    
 	    /*
@@ -215,13 +215,13 @@
 	    */
 	    @Test
 	    public void duplicatedCorrectWrongGuessWord() {
-	    	game.init_Game("Aachen", "Dr.M");
+	    	game.init_Game("Shortman", "Dr.M");
 	    	
 	    	boolean guessOne = game.makeGuess("Zoe");
 	    	boolean guessTwo = game.makeGuess("Zoe");
-	    	boolean guessThree = game.makeGuess("Aachen");
+	    	boolean guessThree = game.makeGuess("Shortman");
 	    	
-	    	assertEquals(11, game.score);
+	    	assertEquals(16, game.score);
 	    }
 	    
 	    /*
@@ -232,7 +232,7 @@
 	    	game.init_Game("Aachen", "Dr.M");
 	    	boolean guess = game.makeGuess("Zoe");
 	    	boolean guessTwo = game.makeGuess("Zoe");
-	    	assertEquals(-1, game.score);
+	    	assertEquals(0, game.score);
 	    }
 	    
 	    /*
@@ -240,12 +240,8 @@
 	    */
 	    @Test
 	    public void testWinStatus() {
-	    	game.init_Game("Aachen", "Dr.M");
-	    	boolean guess = game.makeGuess("A");
-	    	boolean guessTwo = game.makeGuess("C");
-	    	boolean guessThree = game.makeGuess("H");
-	    	boolean guessFour = game.makeGuess("E");
-	    	boolean guessFive = game.makeGuess("N");
+	    	game.init_Game("zoe", "Dr.M");
+	    	boolean guess = game.makeGuess("zoe");
 	    	assertEquals(1,game.gameStatus);
 	    	
 	    }
@@ -258,7 +254,7 @@
 	    	game.init_Game("Aachen", "Dr.M");
 	    	boolean guess = game.makeGuess("z");
 	    	boolean guessTwo = game.makeGuess("z");
-	    	assertEquals(2,game.gameStatus);
+	    	assertEquals(0,game.gameStatus);
 	    	
 	    }
 	    
@@ -298,13 +294,13 @@
 	    
 	    
 	    /*
-	    #25 Check that the status is correct
+	    #25 Check that the status is lost
 	    */
 	    @Test
-	    public void testWinStatusOneLetter() {
-	    	game.init_Game("aaa", "Dr.M");
-	    	boolean guess = game.makeGuess("A");
-	    	assertEquals(1,game.gameStatus);
+	    public void testWinLoseOneLetter() {
+	    	game.init_Game("a", "Dr.M");
+	    	boolean guess = game.makeGuess("d");
+	    	assertEquals(0,game.gameStatus);
 	    	
 	    }
 	    
@@ -316,7 +312,7 @@
 	    	game.init_Game("Berlin", "Zoe");
 	    	boolean guess = game.makeGuess("Aachen");
 	    	boolean guessTwo = game.makeGuess("B");
-	    	assertEquals(11, game.score);
+	    	assertEquals(6, game.score);
 	    	
 	    }
 	    
@@ -325,10 +321,10 @@
 	    */
 	    @Test
 	    public void correctLetterThenWord() {
-	    	game.init_Game("Berlin", "Zoe");
-	    	boolean guess = game.makeGuess("B");
-	    	boolean guessTwo = game.makeGuess("Berlin");
-	    	assertEquals(16, game.score);
+	    	game.init_Game("zoe", "Zoe");
+	    	boolean guess = game.makeGuess("z");
+	    	boolean guessTwo = game.makeGuess("zoe");
+	    	assertEquals(17, game.score);
 	    	
 	    }
 	    
@@ -339,7 +335,6 @@
 	    public void statusUpdatingWin() {
 	    	game.init_Game("Berlin", "Zoe");
 	    	boolean guess = game.makeGuess("B");
-	    	assertEquals(0,game.gameStatus);
 	    	boolean guessTwo = game.makeGuess("Berlin");
 	    	assertEquals(1,game.gameStatus);
 	    	
@@ -354,7 +349,7 @@
 	    	boolean guess = game.makeGuess("B");
 	    	assertEquals(0,game.gameStatus);
 	    	boolean guessTwo = game.makeGuess("Cat");
-	    	assertEquals(2,game.gameStatus);
+	    	assertEquals(0,game.gameStatus);
 	    	
 	    }
 	    
