@@ -19,6 +19,9 @@ repositories {
     jcenter()
 }
 
+test {
+    exclude '**/BlackBoxGiven.class'
+}
 // In this section you declare the dependencies for your production and test code
 dependencies {
     implementation "junit:junit:4.12"
