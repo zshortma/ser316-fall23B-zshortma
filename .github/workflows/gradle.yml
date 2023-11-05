@@ -15,6 +15,7 @@ on:
     - StaticAnalysis
     - Review
     - Whitebox
+    - Dev
     
   pull_request:
     branches:
@@ -23,6 +24,7 @@ on:
     - StaticAnalysis
     - Review
     - Whitebox
+    - Dev
 
 permissions:
   contents: read
