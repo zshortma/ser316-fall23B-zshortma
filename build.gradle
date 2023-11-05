@@ -1,6 +1,8 @@
 plugins {
+
      id "com.github.spotbugs" version "5.0.12"
      id "checkstyle"
+
 }
 
 apply plugin: 'application'
@@ -28,7 +30,7 @@ dependencies {
 
 apply plugin: 'checkstyle'
  checkstyle {
-     // Keep checkstyle a little quieter
+   // Keep checkstyle a little quieter
    ignoreFailures = true
    showViolations = false
  }
@@ -36,7 +38,7 @@ apply plugin: 'checkstyle'
  tasks.withType(Checkstyle) {
    reports {
     html.enabled = true
-     xml.enabled = false
+       xml.enabled = false
    }
  }
  checkstyle {
@@ -49,13 +51,13 @@ apply plugin: 'checkstyle'
 ///////////////////////////////////////////////////////////////////////
 // To generate an HTML report instead of XML
  spotbugsMain {
-    reports {
+     reports {
          xml.enabled = false
-        html.enabled = true
+         html.enabled = true
      }
  }
  spotbugs {
      ignoreFailures = true
      showProgress = true
-     effort = 'max'
+    effort = 'max'
  }

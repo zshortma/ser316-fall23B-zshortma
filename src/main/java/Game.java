@@ -16,7 +16,7 @@ public class Game {
     /** Holds the score for the game. */
     public int score;
 
-    String name;
+    String playerName;
 
     /** Holds the answer for the game. */
     String answer;
@@ -31,6 +31,9 @@ public class Game {
 
     /** The status of the game. {0 - In progress, 1 - Game won, 2 - game lost}*/
     protected int gameStatus = 0;
+    
+    public static final int CITY = 0;
+    public static final int COUNTRY = 1;
 
     // all letter guesses, needs to be cleared for each game
     ArrayList<String> guesses = new ArrayList<String>();
@@ -141,7 +144,7 @@ public class Game {
      * @param imageType 0=city, 1=country
      */
     public Game(String fixedWord, String name){
-        this.name = name;
+        this.playerName = name;
         this.answer = fixedWord;
         setScore(10);
         this.progress = new char[answer.length()];
@@ -153,7 +156,7 @@ public class Game {
      * Constructs a new hangmanGame with no arguments.
      */
     public Game(){
-        this.name = "";
+        this.playerName = "";
         this.answer = "";
         setScore(10);
         this.progress = new char[answer.length()];
@@ -162,7 +165,7 @@ public class Game {
     }
 
     public void init_Game(String answer, String name){
-        this.name = name;
+        this.playerName = name;
         this.answer = answer;
         this.guesses.clear();
         setScore(10);

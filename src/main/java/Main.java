@@ -5,6 +5,10 @@ public class Main {
     static Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
     
     public static void main(String[] args) {
+    	
+    try {
+    	
+    
         // just some calls
         System.out.println("Getting started");
         Game game = new Game(1);
@@ -21,9 +25,25 @@ public class Main {
         System.out.println(newgame.progress);
         while (newgame.getGameStatus() == 0) {
             String message = scanner.nextLine();
-            System.out.println(newgame.makeGuess(message));
+            boolean validGuess = newgame.makeGuess(message);
+            
+            if (!validGuess) {
+            	
+                System.out.println("Invalid guess. Please enter a valid letter or word.");
+                
+            }
+            
+           
             System.out.println("Score: " + newgame.score);
             System.out.println(newgame.progress);
+            
+          } 
+        
+        } catch (Exception e) {
+        	
+            System.err.println("An error occurred: " + e.getMessage());
+            e.printStackTrace();
+            
         }
     }
 }
