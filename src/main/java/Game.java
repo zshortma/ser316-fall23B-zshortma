@@ -44,7 +44,7 @@ public class Game {
      * @return String The name.
      */
     public String getName() {
-        return this.name;
+        return this.playerName;
     }
 
     /**
@@ -126,7 +126,7 @@ public class Game {
      * @param imageType 0=city, 1=country
      */
     public Game(String name, int imageType){
-        this.name = "Elsa";
+        this.playerName = "Elsa";
         if (imageType == 0) {
             getRandomWord("city");
         } else if (imageType == 1) {
@@ -179,7 +179,7 @@ public class Game {
      * @param imageType 0=city, 1=country
      */
     public Game(int imageType){
-        this.name = "Anna";
+        this.playerName = "Anna";
         if (imageType == 1) {
             getRandomWord("city");
         } else if (imageType == 2)
