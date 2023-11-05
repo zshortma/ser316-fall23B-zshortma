@@ -9,9 +9,20 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+    - main
+    - Blackbox
+    - StaticAnalysis
+    - Review
+    - Whitebox
+    
   pull_request:
-    branches: [ "main" ]
+    branches:
+    - main
+    - Blackbox
+    - StaticAnalysis
+    - Review
+    - Whitebox
 
 permissions:
   contents: read
