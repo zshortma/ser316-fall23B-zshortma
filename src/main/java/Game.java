@@ -126,7 +126,7 @@ public class Game {
      * @param name
      * @param imageType 0=city, 1=country
      */
-    public Game(String name, int imageType){
+    public Game(String name, int imageType) {
         this.playerName = "Elsa";
         if (imageType == 0) {
             getRandomWord("city");
@@ -142,9 +142,9 @@ public class Game {
     /**
      * Constructs a new hangmanGame with a fixed name.
      * @param name
-     * @param imageType 0=city, 1=country
+     * @param fixedWord 0=city, 1=country
      */
-    public Game(String fixedWord, String name){
+    public Game(String fixedWord, String name) {
         this.playerName = name;
         this.answer = fixedWord;
         setScore(10);
@@ -156,7 +156,7 @@ public class Game {
     /**
      * Constructs a new hangmanGame with no arguments.
      */
-    public Game(){
+    public Game() {
         this.playerName = "";
         this.answer = "";
         setScore(10);
@@ -166,7 +166,7 @@ public class Game {
         
     }
 
-    public void init_Game(String answer, String name){
+    public void init_Game(String answer, String name) {
         this.playerName = name;
         this.answer = answer;
         this.guesses.clear();
@@ -181,7 +181,7 @@ public class Game {
      * the player.
      * @param imageType 0=city, 1=country
      */
-    public Game(int imageType){
+    public Game(int imageType) {
         this.playerName = "Anna";
         if (imageType == 1) {
             getRandomWord("city");
@@ -197,7 +197,8 @@ public class Game {
      * It should be case-insensitive, treating uppercase and lowercase letters as equivalent.
      * Method checks if the guess is correct (letter in "answer" or complete word correct), should 
      * ignore upper/lowe case.
-     * Should set score based on if it was a letter or word guess and based on if it was correct or not.
+     * Should set score based on if it was a letter or word guess and based on if it was 
+     * correct or not.
      *
      * If letter:
      *  Check that the letter is in the answer, if so turn that letter in the process variable
@@ -309,7 +310,7 @@ public class Game {
         int randomNum = 0;
 
         if (choice.equals("city")) {
-            randomNum = (int)(Math.floor(Math.random()*(100 - 2 + 1) + 2) % cities.length);
+            randomNum = (int)(Math.floor(Math.random() * (100 - 2 + 1) + 2) % cities.length);
             this.answer = cities[randomNum];
         } else {
             randomNum = (int) (Math.floor(Math.random() * (100 - 2 + 1) + 2) % countries.length);
