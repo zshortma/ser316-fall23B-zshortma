@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Class for handling some game logic for hangman game.
@@ -194,15 +195,92 @@ public class Game {
      * @return boolean. If the guess was correct.
      */
     public boolean makeGuess(String guess) {
-        System.out.println("Not yet implemented here, you will need to implement it in assignment 3!");
-        return true;
+    	
+        guess = guess.toLowerCase();
+        List<String> guessedLetters = new ArrayList<>();
+        List<String> guessedWords = new ArrayList<>();
+        String lastGuess = null; 
+        
+     
+
+        if (guess.isEmpty() || guess.isBlank() || guess.equalsIgnoreCase(" ")) {
+           
+        	score--;
+            return false;
+        }
+
+        if (String.valueOf(progress).equalsIgnoreCase(answer)) {
+            gameStatus = 1; 
+            return true;
+        }
+
+        if (guessedLetters.contains(guess) || guessedWords.contains(guess)) {
+            if (guessedLetters.contains(guess)) {
+          
+                score -= 2;
+            }
+            return false;
+        }
+        
+      
+
+        if (guess.length() == 1) {
+            if (answer.toLowerCase().contains(guess)) {
+                guessedLetters.add(guess);
+                int occurrences = 0;
+                for (char letter : answer.toLowerCase().toCharArray()) {
+                    if (letter == guess.charAt(0)) {
+                    	if (!guessedLetters.contains(guess)) {
+                    		score += 1;
+                    	}
+                        occurrences++;
+                    }
+                }
+                score += occurrences;
+                return true;
+                
+                
+            } else {
+                guessedLetters.add(guess);
+                score--;
+                return false;
+            }
+            
+        } else {
+            if (answer.equalsIgnoreCase(guess)) {
+                for (char letter : answer.toLowerCase().toCharArray()) {
+                    if (!guessedLetters.contains(String.valueOf(letter))) {
+                   
+                    	 
+                        score += 2;
+                    }
+                }
+                guessedWords.add(guess);
+
+                
+                    gameStatus = 1; 
+              
+
+                return true;
+            } else {
+                guessedWords.add(guess);
+                score -= 5;
+                return false;
+            }
+        }
+        
+        
     }
+
 
     /**
      * Pulls out a random image and encodes it to be communicated to the client
      * @param dir directory to the relevant image folder.
      */
     public void getRandomWord(String choice) {
+    	
+    	/* make case sensitive */
+    	choice = choice.toLowerCase();
 
         String[] cities = {"Aachen", "Berlin", "Phoenix", "Washington", "Munich", "Hamburg"};
         String[] countries = {"USA", "Germany", "Ireland", "Switzerland", "Austria"};
