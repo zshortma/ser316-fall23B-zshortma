@@ -32,7 +32,7 @@ public class Game {
 
     /** The status of the game. {0 - In progress, 1 - Game won, 2 - game lost}*/
     protected int gameStatus = 0;
-    
+
     public static final int CITY = 0;
     public static final int COUNTRY = 1;
 
@@ -123,7 +123,7 @@ public class Game {
 
     /**
      * Constructs a new hangmanGame.
-     * @param name
+     * @param name game name entered
      * @param imageType 0=city, 1=country
      */
     public Game(String name, int imageType) {
@@ -163,7 +163,7 @@ public class Game {
         this.progress = new char[answer.length()];
         char f = '_';
         Arrays.fill(this.progress, f);
-        
+
     }
 
     public void init_Game(String answer, String name) {
@@ -185,8 +185,9 @@ public class Game {
         this.playerName = "Anna";
         if (imageType == 1) {
             getRandomWord("city");
-        } else if (imageType == 2)
+        } else if (imageType == 2) {
             getRandomWord("city");
+        }
         setScore(12);
         this.progress = new char[answer.length()];
     }
@@ -217,40 +218,40 @@ public class Game {
      * @return boolean. If the guess was correct.
      */
     public boolean makeGuess(String guess) {
-        
+
         guess = guess.toLowerCase();
         List<String> guessedLetters = new ArrayList<>();
         List<String> guessedWords = new ArrayList<>();
-        String lastGuess = null; 
-        
-     
+        String lastGuess = null;
+
+
 
         if (guess.isEmpty() || guess.isBlank() || guess.equalsIgnoreCase(" ")) {
-           
+
             score--;
             return false;
         }
 
         if (String.valueOf(progress).equalsIgnoreCase(answer)) {
-            gameStatus = 1; 
+            gameStatus = 1;
             return true;
         }
 
         if (guessedLetters.contains(guess) || guessedWords.contains(guess)) {
             if (guessedLetters.contains(guess)) {
-          
+
                 score -= 2;
             }
             return false;
         }
-        
-      
+
+
 
         if (guess.length() == 1) {
             if (answer.toLowerCase().contains(guess)) {
                 guessedLetters.add(guess);
                 int occurrences = 0;
-                for (char letter : answer.toLowerCase().toCharArray()) {
+                for (char letter: answer.toLowerCase().toCharArray()) {
                     if (letter == guess.charAt(0)) {
                         if (!guessedLetters.contains(guess)) {
                             score += 1;
@@ -260,28 +261,28 @@ public class Game {
                 }
                 score += occurrences;
                 return true;
-                
-                
+
+
             } else {
                 guessedLetters.add(guess);
                 score--;
                 return false;
             }
-            
+
         } else {
             if (answer.equalsIgnoreCase(guess)) {
-                for (char letter : answer.toLowerCase().toCharArray()) {
+                for (char letter: answer.toLowerCase().toCharArray()) {
                     if (!guessedLetters.contains(String.valueOf(letter))) {
-                   
-                         
+
+
                         score += 2;
                     }
                 }
                 guessedWords.add(guess);
 
-                
-                    gameStatus = 1; 
-              
+
+                gameStatus = 1;
+
 
                 return true;
             } else {
@@ -290,8 +291,8 @@ public class Game {
                 return false;
             }
         }
-        
-        
+
+
     }
 
 
@@ -300,12 +301,25 @@ public class Game {
      * @param choice takes in users letter choice. 
      */
     public void getRandomWord(String choice) {
-        
+
         /* make case sensitive */
         choice = choice.toLowerCase();
 
-        String[] cities = {"Aachen", "Berlin", "Phoenix", "Washington", "Munich", "Hamburg"};
-        String[] countries = {"USA", "Germany", "Ireland", "Switzerland", "Austria"};
+        String[] cities = {
+            "Aachen",
+            "Berlin",
+            "Phoenix",
+            "Washington",
+            "Munich",
+            "Hamburg"
+        };
+        String[] countries = {
+            "USA",
+            "Germany",
+            "Ireland",
+            "Switzerland",
+            "Austria"
+        };
 
         int randomNum = 0;
 
@@ -313,7 +327,7 @@ public class Game {
             randomNum = (int)(Math.floor(Math.random() * (100 - 2 + 1) + 2) % cities.length);
             this.answer = cities[randomNum];
         } else {
-            randomNum = (int) (Math.floor(Math.random() * (100 - 2 + 1) + 2) % countries.length);
+            randomNum = (int)(Math.floor(Math.random() * (100 - 2 + 1) + 2) % countries.length);
             this.answer = countries[randomNum];
         }
 

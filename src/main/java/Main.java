@@ -14,8 +14,6 @@ public class Main {
 
         try {
 
-
-            // just some calls
             System.out.println("Getting started");
             Game game = new Game(1);
             System.out.println("Current word: " + game.answer);
@@ -25,15 +23,17 @@ public class Main {
             System.out.println(game.progress);
 
 
-            // Rough game play
+          
             Game newgame = new Game("Dr. M.", 0);
             System.out.println("Make a guess: ");
             System.out.println(newgame.progress);
 
             while (newgame.getGameStatus() == 0) {
+                
                 String message = scanner.nextLine();
                 boolean validGuess = newgame.makeGuess(message);
 
+                // Error handling if guess is invalid. 
                 if (!validGuess) {
 
                     System.out.println("Invalid guess. Please enter a valid letter or word.");
