@@ -1,7 +1,9 @@
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+    
     public static void main(String[] args) {
         // just some calls
         System.out.println("Getting started");

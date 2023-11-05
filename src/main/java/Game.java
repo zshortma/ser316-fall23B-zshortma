@@ -4,9 +4,11 @@ import java.util.List;
 
 /**
  * Class for handling some game logic for hangman game.
- * Every game starts with a score of 10 and the points are reduced based on the description of "makeGuess". Score holds the currect score for one game.
+ * Every game starts with a score of 10 and the points are reduced based on the
+ *  description of "makeGuess". Score holds the currect score for one game.
  * Game is lost when score is 0 or less.
- * Answer holds the current answer, progres hold the currect word with "_" for letters that were not guessed yet.
+ * Answer holds the current answer, progres hold the currect word with "_" for letters
+ *  that were not guessed yet.
  *
  */
 public class Game {
@@ -19,14 +21,13 @@ public class Game {
     /** Holds the answer for the game. */
     String answer;
 
-    /** Holds the current progress towards the answer*/
+    /** Holds the current progress towards the answer.*/
     char[] progress;
 
-    /** The encoded String for sending to the client*/
-    private String encodedImage;
+    /** The encoded String for sending to the client.*/
+    private String encodedImage = "image_default";
 
-    /** The path to the file holding the leaderboard.*/
-    private String leaderboardFName = "leaderboard.txt";
+    /* SER316 Spotbugs correction */
 
     /** The status of the game. {0 - In progress, 1 - Game won, 2 - game lost}*/
     protected int gameStatus = 0;
@@ -39,46 +40,59 @@ public class Game {
      * Gets the name for the game.
      * @return String The name.
      */
-    public String getName() {return this.name;}
+    public String getName() {
+        return this.name;
+    }
 
     /**
      * Gets the answer for the game.
      * @return String The Answer.
      */
-    public String getAnswer() {return this.answer.toLowerCase();}
+    public String getAnswer() {
+        return this.answer.toLowerCase();
+    }
 
     /**
      * Gets the current progress towards the answer.
      * @return char[] Character Array of the progress.
      */
-    public char[] getProgress() {return this.progress;}
+    public char[] getProgress() {
+        return Arrays.copyOf(this.progress, this.progress.length);
+    }
 
     /**
      * Gets the encoded image for for the answer.
      * @return String the image encoded in text
      */
-    public String getEncodedImage() {return this.encodedImage;}
+    public String getEncodedImage() {
+        return this.encodedImage;
+    }
 
     /**
      * Gets the current status of the game.
      * @return
      */
-    public int getGameStatus() {return this.gameStatus;}
+    public int getGameStatus() {
+        return this.gameStatus;
+    }
 
     /**
      * Sets the score for the game.
      * @param score
      */
-    public void setScore(int score) {this.score = score;}
+    public void setScore(int score) {
+        this.score = score;
+    }
 
     /**
-     * Checks what positions a letter should be entered into and sets that value into the progress array.
-     * @param letter
+     * Checks what positions a letter should be entered into and sets that value 
+     * into the progress array.
+     * @param letter takes in users guess.
      */
     protected int setProgress(char letter) {
         int count = 0;
         int i = 0;
-        while(this.getAnswer().indexOf(letter, i) >= 0){
+        while (this.getAnswer().indexOf(letter, i) >= 0) {
             i = this.getAnswer().indexOf(letter, i) + 1;
             this.progress[i - 1] = letter;
             count++;
@@ -87,11 +101,12 @@ public class Game {
     }
 
     /**
-     * Completely fills the progress with the answer. Returns the number of letters that were still unturned
+     * Completely fills the progress with the answer. Returns the number of letters that 
+     * were still unturned.
      */
     public int fillProgress() {
         int hit = 0;
-        for(int i = 0; i < this.getProgress().length; i++){
+        for (int i = 0; i < this.getProgress().length; i++) {
             char f = '_';
             if (this.progress[i] == (f)) {
                 this.progress[i] = this.getAnswer().charAt(i);
@@ -109,9 +124,9 @@ public class Game {
      */
     public Game(String name, int imageType){
         this.name = "Elsa";
-        if(imageType == 0){
+        if (imageType == 0) {
             getRandomWord("city");
-        }else if(imageType == 1){
+        } else if (imageType == 1) {
             getRandomWord("country");
         }
         setScore(14);
@@ -121,7 +136,7 @@ public class Game {
     }
 
     /**
-     * Constructs a new hangmanGame with a fixed name
+     * Constructs a new hangmanGame with a fixed name.
      * @param name
      * @param imageType 0=city, 1=country
      */
@@ -135,7 +150,7 @@ public class Game {
     }
 
     /**
-     * Constructs a new hangmanGame with no arguments
+     * Constructs a new hangmanGame with no arguments.
      */
     public Game(){
         this.name = "";
@@ -162,9 +177,9 @@ public class Game {
      */
     public Game(int imageType){
         this.name = "Anna";
-        if(imageType == 1){
+        if (imageType == 1) {
             getRandomWord("city");
-        }else if(imageType == 2)
+        } else if (imageType == 2)
             getRandomWord("city");
         setScore(12);
         this.progress = new char[answer.length()];
@@ -174,12 +189,14 @@ public class Game {
     /**
      * The method accepts a single parameter, "guess," which can be a letter or a word.
      * It should be case-insensitive, treating uppercase and lowercase letters as equivalent.
-     * Method checks if the guess is correct (letter in "answer" or complete word correct), should ignore upper/lowe case.
+     * Method checks if the guess is correct (letter in "answer" or complete word correct), should 
+     * ignore upper/lowe case.
      * Should set score based on if it was a letter or word guess and based on if it was correct or not.
      *
      * If letter:
      *  Check that the letter is in the answer, if so turn that letter in the process variable
-     *  If the letter is in the word more than once then turn all of them. For each correct letter give +1 point, for an incorrect letter -1
+     *  If the letter is in the word more than once then turn all of them. For each correct letter
+     *   give +1 point, for an incorrect letter -1
      *  If that guess was already made (either correct or incorrect) take -2 points
      * If word:
      *  Check that word is correct
@@ -195,7 +212,7 @@ public class Game {
      * @return boolean. If the guess was correct.
      */
     public boolean makeGuess(String guess) {
-    	
+        
         guess = guess.toLowerCase();
         List<String> guessedLetters = new ArrayList<>();
         List<String> guessedWords = new ArrayList<>();
@@ -205,7 +222,7 @@ public class Game {
 
         if (guess.isEmpty() || guess.isBlank() || guess.equalsIgnoreCase(" ")) {
            
-        	score--;
+            score--;
             return false;
         }
 
@@ -230,9 +247,9 @@ public class Game {
                 int occurrences = 0;
                 for (char letter : answer.toLowerCase().toCharArray()) {
                     if (letter == guess.charAt(0)) {
-                    	if (!guessedLetters.contains(guess)) {
-                    		score += 1;
-                    	}
+                        if (!guessedLetters.contains(guess)) {
+                            score += 1;
+                        }
                         occurrences++;
                     }
                 }
@@ -251,7 +268,7 @@ public class Game {
                 for (char letter : answer.toLowerCase().toCharArray()) {
                     if (!guessedLetters.contains(String.valueOf(letter))) {
                    
-                    	 
+                         
                         score += 2;
                     }
                 }
@@ -274,13 +291,13 @@ public class Game {
 
 
     /**
-     * Pulls out a random image and encodes it to be communicated to the client
-     * @param dir directory to the relevant image folder.
+     * Pulls out a random image and encodes it to be communicated to the client.
+     * @param choice takes in users letter choice. 
      */
     public void getRandomWord(String choice) {
-    	
-    	/* make case sensitive */
-    	choice = choice.toLowerCase();
+        
+        /* make case sensitive */
+        choice = choice.toLowerCase();
 
         String[] cities = {"Aachen", "Berlin", "Phoenix", "Washington", "Munich", "Hamburg"};
         String[] countries = {"USA", "Germany", "Ireland", "Switzerland", "Austria"};
@@ -288,7 +305,7 @@ public class Game {
         int randomNum = 0;
 
         if (choice.equals("city")) {
-            randomNum = (int)(Math.floor(Math.random()*(100-2+1)+2) % cities.length);
+            randomNum = (int)(Math.floor(Math.random()*(100 - 2 + 1) + 2) % cities.length);
             this.answer = cities[randomNum];
         } else {
             randomNum = (int) (Math.floor(Math.random() * (100 - 2 + 1) + 2) % countries.length);
