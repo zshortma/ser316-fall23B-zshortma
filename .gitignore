@@ -4,6 +4,9 @@
 # Log file
 *.log
 
+# Ignore DS file
+.DS_Store
+
 # BlueJ files
 *.ctxt
 
