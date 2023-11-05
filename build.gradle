@@ -1,11 +1,8 @@
 plugins {
-<<<<<<< HEAD
-    id "com.github.spotbugs" version "5.0.12"
-   id "checkstyle"
-=======
+
      id "com.github.spotbugs" version "5.0.12"
      id "checkstyle"
->>>>>>> 9286a07f34e36da5c8c15356547fe2342e601705
+
 }
 
 apply plugin: 'application'
