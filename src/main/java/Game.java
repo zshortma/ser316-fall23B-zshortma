@@ -4,11 +4,12 @@ import java.util.List;
 
 /**
  * Class for handling some game logic for hangman game.
- * Every game starts with a score of 10 and the points are reduced based on the
- *  description of "makeGuess". Score holds the currect score for one game.
- * Game is lost when score is 0 or less.
- * Answer holds the current answer, progres hold the currect word with "_" for letters
- *  that were not guessed yet.
+ * Every game starts with a score of 10 and the points. 
+ * are reduced based on the description of "makeGuess".
+ *  Score holds the currect score for one game. Game is lost 
+ *  when score is 0 or less.
+ * Answer holds the current answer, progres hold the currect word with "_" 
+ * for letters that were not guessed yet.
  *
  */
 public class Game {
@@ -22,12 +23,12 @@ public class Game {
     String answer;
 
     /** Holds the current progress towards the answer.*/
-    char[] progress;
+    char[] progress = "Default".toCharArray();
 
     /** The encoded String for sending to the client.*/
     private String encodedImage = "image_default";
 
-    /* SER316 Spotbugs correction */
+    /* SER316 TASK 2 SPOTBUGS FIX - get rid of unused string*/
 
     /** The status of the game. {0 - In progress, 1 - Game won, 2 - game lost}*/
     protected int gameStatus = 0;
@@ -81,7 +82,7 @@ public class Game {
 
     /**
      * Sets the score for the game.
-     * @param score
+     * @param score takes in the game score
      */
     public void setScore(int score) {
         this.score = score;
@@ -162,6 +163,7 @@ public class Game {
         this.progress = new char[answer.length()];
         char f = '_';
         Arrays.fill(this.progress, f);
+        
     }
 
     public void init_Game(String answer, String name){
@@ -175,7 +177,8 @@ public class Game {
     }
 
     /**
-     * Constructs a new hangmanGame with Anonymous as the name of the player.
+     * Constructs a new hangmanGame with Anonymous as the name of 
+     * the player.
      * @param imageType 0=city, 1=country
      */
     public Game(int imageType){
@@ -206,8 +209,6 @@ public class Game {
      *  If correct give +2 points for each letter that was still not turned in progress variable
      *  If incorrect guess -5 points overall
      *  If that guess was already made then take 6 points from the score
-     *
-     *
      * If the word is complete after the guess then set status of game to 1;
      * If the score is 0 or less the player lost and the status should be set to 2.
      *

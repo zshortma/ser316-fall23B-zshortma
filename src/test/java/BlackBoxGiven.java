@@ -76,9 +76,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void letterCorrectLower() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("a");
-    	assertEquals(12, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("a");
+        assertEquals(12, game.score);
     }
     
     /*
@@ -86,9 +86,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void letterNotCorrectLower() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("z");
-    	assertEquals(9, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("z");
+        assertEquals(9, game.score);
     }
     
     /*
@@ -96,9 +96,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void letterCorrectUpper() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("N");
-    	assertEquals(11, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("N");
+        assertEquals(11, game.score);
     }
     
     /*
@@ -106,9 +106,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void letterNotCorrectUpper() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("Q");
-    	assertEquals(9, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("Q");
+        assertEquals(9, game.score);
     }
     
     /*
@@ -116,9 +116,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void wordCorrectLower() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("aachen");
-    	assertEquals(16, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("aachen");
+        assertEquals(16, game.score);
     }
     
     /*
@@ -126,9 +126,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void wordNotCorrectLower() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("wrong");
-    	assertEquals(5, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("wrong");
+        assertEquals(5, game.score);
     }
     
     /*
@@ -136,9 +136,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void wordCorrectUpper() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("AACHEN");
-    	assertEquals(16, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("AACHEN");
+        assertEquals(16, game.score);
     }
     
     /*
@@ -146,9 +146,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void wordNotCorrectUpper() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("WRONG");
-    	assertEquals(5, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("WRONG");
+        assertEquals(5, game.score);
     }
     
     /*
@@ -156,9 +156,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void emptyGuess() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("");
-    	assertEquals(9, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("");
+        assertEquals(9, game.score);
     }
     
     /*
@@ -166,9 +166,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void specailCharacterGuess() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("%");
-    	assertEquals(9, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("%");
+        assertEquals(9, game.score);
     }
     
     /*
@@ -176,9 +176,9 @@ public class BlackBoxGiven {
     */
     @Test
     public void invalidWordGuess() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("zoe%");
-    	assertEquals(5, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("zoe%");
+        assertEquals(5, game.score);
     }
     
     /*
@@ -186,10 +186,10 @@ public class BlackBoxGiven {
     */
     @Test
     public void duplicatedCorrectGuessLetter() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("a");
-    	boolean guessTwo = game.makeGuess("a");
-    	assertEquals(10, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("a");
+        boolean guessTwo = game.makeGuess("a");
+        assertEquals(10, game.score);
     }
     
     /*
@@ -197,10 +197,10 @@ public class BlackBoxGiven {
     */
     @Test
     public void duplicatedWrongGuessLetter() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("z");
-    	boolean guessTwo = game.makeGuess("z");
-    	assertEquals(7, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("z");
+        boolean guessTwo = game.makeGuess("z");
+        assertEquals(7, game.score);
     }
     
     /*
@@ -208,10 +208,10 @@ public class BlackBoxGiven {
     */
     @Test
     public void duplicatedCorrectGuessWord() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("Aachen");
-    	boolean guessTwo = game.makeGuess("Aachen");
-    	assertEquals(6, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("Aachen");
+        boolean guessTwo = game.makeGuess("Aachen");
+        assertEquals(6, game.score);
     }
     
     /*
@@ -219,13 +219,13 @@ public class BlackBoxGiven {
     */
     @Test
     public void duplicatedCorrectWrongGuessWord() {
-    	game.init_Game("Aachen", "Dr.M");
-    	
-    	boolean guessOne = game.makeGuess("Zoe");
-    	boolean guessTwo = game.makeGuess("Zoe");
-    	boolean guessThree = game.makeGuess("Aachen");
-    	
-    	assertEquals(11, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        
+        boolean guessOne = game.makeGuess("Zoe");
+        boolean guessTwo = game.makeGuess("Zoe");
+        boolean guessThree = game.makeGuess("Aachen");
+        
+        assertEquals(11, game.score);
     }
     
     /*
@@ -233,10 +233,10 @@ public class BlackBoxGiven {
     */
     @Test
     public void duplicatedWrongGuessWord() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("Zoe");
-    	boolean guessTwo = game.makeGuess("Zoe");
-    	assertEquals(-1, game.score);
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("Zoe");
+        boolean guessTwo = game.makeGuess("Zoe");
+        assertEquals(-1, game.score);
     }
     
     /*
@@ -244,14 +244,14 @@ public class BlackBoxGiven {
     */
     @Test
     public void testWinStatus() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("A");
-    	boolean guessTwo = game.makeGuess("C");
-    	boolean guessThree = game.makeGuess("H");
-    	boolean guessFour = game.makeGuess("E");
-    	boolean guessFive = game.makeGuess("N");
-    	assertEquals(1,game.gameStatus);
-    	
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("A");
+        boolean guessTwo = game.makeGuess("C");
+        boolean guessThree = game.makeGuess("H");
+        boolean guessFour = game.makeGuess("E");
+        boolean guessFive = game.makeGuess("N");
+        assertEquals(1,game.gameStatus);
+        
     }
     
     /*
@@ -259,11 +259,11 @@ public class BlackBoxGiven {
     */
     @Test
     public void testLoseStatus() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("z");
-    	boolean guessTwo = game.makeGuess("z");
-    	assertEquals(2,game.gameStatus);
-    	
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("z");
+        boolean guessTwo = game.makeGuess("z");
+        assertEquals(2,game.gameStatus);
+        
     }
     
     /*
@@ -271,11 +271,11 @@ public class BlackBoxGiven {
     */
     @Test
     public void testActiveStatus() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("a");
-    	boolean guessTwo = game.makeGuess("z");
-    	assertEquals(0,game.gameStatus);
-    	
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("a");
+        boolean guessTwo = game.makeGuess("z");
+        assertEquals(0,game.gameStatus);
+        
     }
     
     /*
@@ -283,10 +283,10 @@ public class BlackBoxGiven {
     */
     @Test
     public void testReturn() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("aachen");
-    	assertTrue(guess);
-    	
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("aachen");
+        assertTrue(guess);
+        
     }
     
     /*
@@ -294,10 +294,10 @@ public class BlackBoxGiven {
     */
     @Test
     public void testReturnFalse() {
-    	game.init_Game("Aachen", "Dr.M");
-    	boolean guess = game.makeGuess("aach");
-    	assertFalse(guess);
-    	
+        game.init_Game("Aachen", "Dr.M");
+        boolean guess = game.makeGuess("aach");
+        assertFalse(guess);
+        
     }
     
     
@@ -306,10 +306,10 @@ public class BlackBoxGiven {
     */
     @Test
     public void testWinStatusOneLetter() {
-    	game.init_Game("aaa", "Dr.M");
-    	boolean guess = game.makeGuess("A");
-    	assertEquals(1,game.gameStatus);
-    	
+        game.init_Game("aaa", "Dr.M");
+        boolean guess = game.makeGuess("A");
+        assertEquals(1,game.gameStatus);
+        
     }
     
     /*
@@ -317,11 +317,11 @@ public class BlackBoxGiven {
     */
     @Test
     public void mixedGuesses() {
-    	game.init_Game("Berlin", "Zoe");
-    	boolean guess = game.makeGuess("Aachen");
-    	boolean guessTwo = game.makeGuess("B");
-    	assertEquals(11, game.score);
-    	
+        game.init_Game("Berlin", "Zoe");
+        boolean guess = game.makeGuess("Aachen");
+        boolean guessTwo = game.makeGuess("B");
+        assertEquals(11, game.score);
+        
     }
     
     /*
@@ -329,11 +329,11 @@ public class BlackBoxGiven {
     */
     @Test
     public void correctLetterThenWord() {
-    	game.init_Game("Berlin", "Zoe");
-    	boolean guess = game.makeGuess("B");
-    	boolean guessTwo = game.makeGuess("Berlin");
-    	assertEquals(16, game.score);
-    	
+        game.init_Game("Berlin", "Zoe");
+        boolean guess = game.makeGuess("B");
+        boolean guessTwo = game.makeGuess("Berlin");
+        assertEquals(16, game.score);
+        
     }
     
     /*
@@ -341,12 +341,12 @@ public class BlackBoxGiven {
     */
     @Test
     public void statusUpdatingWin() {
-    	game.init_Game("Berlin", "Zoe");
-    	boolean guess = game.makeGuess("B");
-    	assertEquals(0,game.gameStatus);
-    	boolean guessTwo = game.makeGuess("Berlin");
-    	assertEquals(1,game.gameStatus);
-    	
+        game.init_Game("Berlin", "Zoe");
+        boolean guess = game.makeGuess("B");
+        assertEquals(0,game.gameStatus);
+        boolean guessTwo = game.makeGuess("Berlin");
+        assertEquals(1,game.gameStatus);
+        
     }
     
     /*
@@ -354,12 +354,12 @@ public class BlackBoxGiven {
     */
     @Test
     public void statusUpdatingLose() {
-    	game.init_Game("Berlin", "Zoe");
-    	boolean guess = game.makeGuess("B");
-    	assertEquals(0,game.gameStatus);
-    	boolean guessTwo = game.makeGuess("Cat");
-    	assertEquals(2,game.gameStatus);
-    	
+        game.init_Game("Berlin", "Zoe");
+        boolean guess = game.makeGuess("B");
+        assertEquals(0,game.gameStatus);
+        boolean guessTwo = game.makeGuess("Cat");
+        assertEquals(2,game.gameStatus);
+        
     }
     
 }

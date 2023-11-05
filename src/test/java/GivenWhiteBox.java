@@ -26,7 +26,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void setProgressNodeOne() {
-    	Game game = new Game("Aachen", "Alex");
+        Game game = new Game("Aachen", "Alex");
         int count = game.setProgress('z');
         assertEquals(0, count);  
     }
@@ -37,7 +37,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void setProgressNodeTwo() {
-    	Game game = new Game("Aachen", "Alex");
+        Game game = new Game("Aachen", "Alex");
         int count = game.setProgress('n');        
         assertEquals(1, count);  
     }
@@ -48,7 +48,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void setProgressEdgeOne() {
-    	Game game = new Game("Aachen", "Alex");
+        Game game = new Game("Aachen", "Alex");
         int count = game.setProgress('a');
         assertEquals(2, count);  
     }
@@ -59,10 +59,10 @@ public class GivenWhiteBox {
      */
     @Test
     public void fillProgressNodeOne() {
-    	Game game = new Game("Aachen", "Alex");
-    	game.progress = "Aachen".toCharArray();
-    	int hit = game.fillProgress();
-    	assertEquals(0, hit); 
+        Game game = new Game("Aachen", "Alex");
+        game.progress = "Aachen".toCharArray();
+        int hit = game.fillProgress();
+        assertEquals(0, hit); 
     }
     
     /**
@@ -71,11 +71,11 @@ public class GivenWhiteBox {
      */
     @Test
     public void fillProgressNodeTwo() {
-    	Game game = new Game("zoe", "Alex");
-    	game.progress = "___".toCharArray();
-    	int count = game.setProgress('z');
-    	int hit = game.fillProgress();
-    	assertEquals(2, hit); 
+        Game game = new Game("zoe", "Alex");
+        game.progress = "___".toCharArray();
+        int count = game.setProgress('z');
+        int hit = game.fillProgress();
+        assertEquals(2, hit); 
     }
 
     /**
@@ -84,7 +84,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void fillProgressEdgeOne() {
-    	Game game = new Game("Aachen", "Alex");
+        Game game = new Game("Aachen", "Alex");
         int count = game.setProgress('a');
         assertEquals(2, count);  
     }
@@ -92,12 +92,12 @@ public class GivenWhiteBox {
     
     /**
      * 7. Edge Test getRandomWord
-     * 	  City branch
+     *       City branch
      *    Changes Required : Made change to make case sensitive. 
      */
     @Test
     public void getRandomTestCity() {
-    	Game game = new Game("Aachen", "Alex");
+        Game game = new Game("Aachen", "Alex");
         game.getRandomWord("city");
         String answer = game.getAnswer();
 
@@ -111,7 +111,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void getRandomTestCountry() {
-    	Game game = new Game("Aachen", "Alex");
+        Game game = new Game("Aachen", "Alex");
         game.getRandomWord("");
         String answer = game.getAnswer();
 
@@ -162,7 +162,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void testMakeGuessEmptyGuess() {
-    	Game game = new Game("Aachen", "Alex");
+        Game game = new Game("Aachen", "Alex");
         assertFalse(game.makeGuess(""));
         assertEquals(9, game.score);
     }
@@ -174,7 +174,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void testMakeGuessEmptyGuess88() {
-    	Game game = new Game("Aachen", "Alex");
+        Game game = new Game("Aachen", "Alex");
         assertFalse(game.makeGuess("j"));
         assertEquals(9, game.score);
     }
@@ -185,7 +185,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void testMakeGuessCorrectSingleLetter() {
-    	Game game = new Game("apple", "Alex");
+        Game game = new Game("apple", "Alex");
         assertTrue(game.makeGuess("a"));
         assertEquals(11, game.score);
     }
@@ -196,7 +196,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void testMakeGuessWord() {
-    	Game game = new Game("apple", "Alex");
+        Game game = new Game("apple", "Alex");
         assertFalse(game.makeGuess("test"));
         assertEquals(5, game.score);
     }
@@ -208,7 +208,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void testMakeGuessCorrectWord() {
-    	Game game = new Game("jade", "Alex");
+        Game game = new Game("jade", "Alex");
         assertTrue(game.makeGuess("jade"));
       }
     
@@ -243,7 +243,7 @@ public class GivenWhiteBox {
      */
     @Test
     public void testInitGame() {
-    	 Game game = new Game();
+         Game game = new Game();
         game.init_Game("city", "Anna");
         assertEquals("Anna", game.getName());
         assertEquals("city", game.getAnswer());
