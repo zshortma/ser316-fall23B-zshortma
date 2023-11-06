@@ -36,7 +36,7 @@ public class Main {
                 // Error handling if guess is invalid. 
                 if (!validGuess) {
 
-                    System.out.println("Invalid guess. Please enter a valid letter or word.");
+                    System.out.println("Incorrect guess.");
 
                 }
 
