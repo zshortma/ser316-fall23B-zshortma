@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-
 /**
  * Class for handling some game logic for hangman game.
  * Every game starts with a score of 10 and the points are reduced based on the description of "makeGuess". Score holds the currect score for one game.
@@ -91,14 +90,13 @@ public class Game {
      * Completely fills the progress with the answer. Returns the number of letters that were still unturned
      */
     public int fillProgress() {
-        
         char f = '_';
-        
         return (int) IntStream.range(0, this.getProgress().length)
                 .filter(i -> this.progress[i] == f)
                 .peek(i -> this.progress[i] = this.getAnswer().charAt(i))
                 .count();
     }
+
     /**
      * Constructs a new hangmanGame.
      * @param name
