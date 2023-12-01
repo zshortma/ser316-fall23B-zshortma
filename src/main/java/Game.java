@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
+
 
 /**
  * Class for handling some game logic for hangman game.
@@ -89,18 +91,14 @@ public class Game {
      * Completely fills the progress with the answer. Returns the number of letters that were still unturned
      */
     public int fillProgress() {
-        int hit = 0;
-        for(int i = 0; i < this.getProgress().length; i++){
-            char f = '_';
-            if (this.progress[i] == (f)) {
-                this.progress[i] = this.getAnswer().charAt(i);
-                hit++;
-            }
-        }
-
-        return hit;
+        
+        char f = '_';
+        
+        return (int) IntStream.range(0, this.getProgress().length)
+                .filter(i -> this.progress[i] == f)
+                .peek(i -> this.progress[i] = this.getAnswer().charAt(i))
+                .count();
     }
-
     /**
      * Constructs a new hangmanGame.
      * @param name
