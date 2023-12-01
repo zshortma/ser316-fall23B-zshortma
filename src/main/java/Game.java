@@ -76,16 +76,24 @@ public class Game {
      * @param letter
      */
     protected int setProgress(char letter) {
-        int count = 0;
-        int i = 0;
-        while(this.getAnswer().indexOf(letter, i) >= 0){
-            i = this.getAnswer().indexOf(letter, i) + 1;
-            this.progress[i - 1] = letter;
-            count++;
-        }
-        return count;
+        return updateProgress(letter, '_');
     }
 
+    
+    private int updateProgress(char letter, char replacement) {
+        int count = 0;
+        char[] answer = this.getAnswer().toCharArray();
+
+        for (int i = 0; i < this.getProgress().length; i++) {
+            if (this.progress[i] == replacement && answer[i] == letter) {
+                this.progress[i] = letter;
+                count++;
+            }
+        }
+
+        return count;
+    }
+    
     /**
      * Completely fills the progress with the answer. Returns the number of letters that were still unturned
      */
@@ -102,67 +110,68 @@ public class Game {
      * @param name
      * @param imageType 0=city, 1=country
      */
-    public Game(String name, int imageType){
-        this.name = "Elsa";
-        if(imageType == 0){
+    
+    public Game(String name, int imageType) {
+        if (imageType == 0) {
+            this.name = "Elsa";
             getRandomWord("city");
-        }else if(imageType == 1){
+            setScore(14);
+        } else if (imageType == 1) {
+            this.name = name;
             getRandomWord("country");
+            setScore(10);
         }
-        setScore(14);
-        this.progress = new char[answer.length()];
-        char f = '_';
-        Arrays.fill(this.progress, f);
+        initializeProgress();
     }
+    
 
     /**
      * Constructs a new hangmanGame with a fixed name
      * @param name
      * @param imageType 0=city, 1=country
      */
-    public Game(String fixedWord, String name){
+    public Game(String fixedWord, String name) {
         this.name = name;
         this.answer = fixedWord;
         setScore(10);
-        this.progress = new char[answer.length()];
-        char f = '_';
-        Arrays.fill(this.progress, f);
+        initializeProgress();
     }
 
     /**
      * Constructs a new hangmanGame with no arguments
      */
     public Game(){
-        this.name = "";
-        this.answer = "";
-        setScore(10);
-        this.progress = new char[answer.length()];
-        char f = '_';
-        Arrays.fill(this.progress, f);
+        init_Game("", "");
     }
 
-    public void init_Game(String answer, String name){
+    public void init_Game(String answer, String name) {
         this.name = name;
         this.answer = answer;
         this.guesses.clear();
         setScore(10);
-        this.progress = new char[answer.length()];
-        char f = '_';
-        Arrays.fill(this.progress, f);
+        initializeProgress();
     }
 
     /**
      * Constructs a new hangmanGame with Anonymous as the name of the player.
      * @param imageType 0=city, 1=country
      */
-    public Game(int imageType){
+    public Game(int imageType) {
         this.name = "Anna";
-        if(imageType == 1){
+        if (imageType == 1 || imageType == 2) {
             getRandomWord("city");
-        }else if(imageType == 2)
-            getRandomWord("city");
-        setScore(12);
+        }
+        setScore(imageType == 1 ? 12 : 10);
+        initializeProgress();
+    }
+    
+    /**
+     * Helps to simplify 
+     */
+    private void initializeProgress() {
         this.progress = new char[answer.length()];
+        char f = '_';
+        Arrays.fill(this.progress, f);
     }
 
 
