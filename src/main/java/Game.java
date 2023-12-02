@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.IntStream;
+import java.util.List;
 
 /**
  * Class for handling some game logic for hangman game.
@@ -198,10 +199,90 @@ public class Game {
      * @param guess
      * @return boolean. If the guess was correct.
      */
-    public boolean makeGuess(String guess) {
-        System.out.println("Not yet implemented here, you will need to implement it in assignment 3!");
-        return true;
+ public boolean makeGuess(String guess) {
+        
+        guess = guess.toLowerCase();
+        List<String> guessedLetters = new ArrayList<>();
+        List<String> guessedWords = new ArrayList<>();
+        String lastGuess = null; 
+        
+        
+        if (score <= 0) {
+            gameStatus = 2; 
+            System.out.println("Sorry, you lost the game! :(");
+        }
+     
+
+        if (guess.isEmpty() || guess.isBlank() || guess.equalsIgnoreCase(" ")) {
+           
+            score--;
+            return false;
+        }
+
+        if (String.valueOf(progress).equalsIgnoreCase(answer)) {
+            System.out.println("Congratulations! You won the game!");
+            gameStatus = 1; 
+            return true;
+        }
+
+        if (guessedLetters.contains(guess) || guessedWords.contains(guess)) {
+            if (guessedLetters.contains(guess)) {
+          
+                score -= 2;
+            }
+            return false;
+        }
+        
+      
+
+        if (guess.length() == 1) {
+            if (answer.toLowerCase().contains(guess)) {
+                guessedLetters.add(guess);
+                int occurrences = 0;
+                for (char letter : answer.toLowerCase().toCharArray()) {
+                    if (letter == guess.charAt(0)) {
+                        if (!guessedLetters.contains(guess)) {
+                            score += 1;
+                        }
+                        occurrences++;
+                    }
+                }
+                score += occurrences;
+                return true;
+                
+                
+            } else {
+                guessedLetters.add(guess);
+                score--;
+                return false;
+            }
+            
+        } else {
+            if (answer.equalsIgnoreCase(guess)) {
+                for (char letter : answer.toLowerCase().toCharArray()) {
+                    if (!guessedLetters.contains(String.valueOf(letter))) {
+                   
+                         
+                        score += 2;
+                    }
+                }
+                guessedWords.add(guess);
+
+                
+                    gameStatus = 1; 
+              
+
+                return true;
+            } else {
+                guessedWords.add(guess);
+                score -= 5;
+                return false;
+            }
+        }
+        
+        
     }
+
 
     /**
      * Pulls out a random image and encodes it to be communicated to the client
